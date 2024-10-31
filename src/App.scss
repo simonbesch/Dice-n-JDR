@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+
+* {
+  margin: 0;
+  font-family: "Indie Flower", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+html {
+  background-color: rgba(218, 172, 255, 0.253);
+  height: 100vh;
+}
+
+.Ornement {
+  width: 100px;
+}
+.GlobalOrnementBas {
+  width: 100px;
+  rotate: 180deg;
+  float: right;
+}
+
+.BigGlobal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Global {
+  background-color: rgba(255, 255, 255, 0.322);
+  padding: 25px;
+  border-radius: 15px;
+  margin-top: -75px;
+}
+
+.All {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 100px;
+  margin-left: 25px;
+  margin-right: 25px;
+  width: 200px;
+}
+
+.inputChooseDice {
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+
+  background-color: black;
+  color: rgb(255, 255, 255);
+  padding: 2px;
+  border: 1px solid rgb(111, 1, 255);
+  border-radius: 7px;
+  text-align: center;
+  z-index: 10;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.342);
+  }
+}
+
+.DiceComponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.separation {
+  height: 300px;
+}
+.criticPourcent {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #73017e;
+  margin-top: 15px;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.Criticalp {
+  margin-bottom: 15px;
+}
+.LastThrowp {
+  margin-top: 15px;
+}
+.Notep {
+  margin-top: 15px;
+}
+
+.DiceIMG {
+  display: block;
+  margin-left: -300px;
+  padding: 50px;
+  .Critic {
+    position: absolute;
+    width: 250px;
+    rotate: -20deg;
+    margin-left: -75px;
+    margin-top: -50px;
+  }
+  .Result {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 200px;
+    margin-top: 11px;
+    width: 300px;
+    color: rgb(146, 0, 146);
+  }
+  img {
+    position: absolute;
+    width: 300px;
+  }
+}
+
+.ThrowButton {
+  background-color: black;
+  color: rgb(255, 255, 255);
+  padding: 2px 10px;
+  border: 1px solid rgb(111, 1, 255);
+  border-radius: 7px;
+  text-align: center;
+  font-size: 17px;
+  z-index: 10;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.342);
+  }
+}
+
+.diceAnimStart {
+  img {
+    animation: rotating 2s;
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(2160deg);
+  }
+}
+
+.DiceContainer {
+  display: flex;
+  justify-content: center;
+}
+.Result {
+  position: relative;
+}
+
+@media (max-width: 500px) {
+  .Ornement {
+    width: 15vw;
+  }
+}
