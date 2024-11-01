@@ -56,13 +56,15 @@ function App() {
 
         <div className="GlobalBack">
           <h1>HELP</h1>
+          <h3>Dice N' JDR</h3>
           <p>Total Throw and Notes are save in local</p>
           <p>If you clear history, Throws and Notes will be erased</p>
           <p>
             Critical % are made if you want Critical Option on your Throw (it's
             just for an animation)
           </p>
-          <p>Many upgrade are comming 😉</p>
+          <p>Many upgrades are comming 😉</p>
+          <p> symon.xyz © Dice n' JDR </p>
           <p>If you want help me, you can buy me an Avocado ❤️</p>
         </div>
         <a href="https://www.buymeacoffee.com/Simonrouxy" target="_blank">
