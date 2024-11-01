@@ -39,8 +39,7 @@ html {
   flex-direction: column;
   align-items: center;
   padding: 5px 100px;
-  margin-left: 25px;
-  margin-right: 25px;
+  margin: 0px 25px;
   width: 200px;
 }
 
@@ -227,5 +226,29 @@ html {
   }
   .GlobalOrnementBas {
     display: none;
+  }
+
+  .BigGlobal {
+    width: auto;
+  }
+  .Global {
+    width: auto;
+    padding: 50px;
+  }
+
+  .All {
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    width: 200px;
+  }
+
+  .GlobalBack {
+    padding: 5px;
+    width: auto;
+  }
+  .BuyMeCoffe {
+    margin-top: 25px;
+    width: 150px;
   }
 }
