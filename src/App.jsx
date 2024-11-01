@@ -7,7 +7,6 @@ import ornement from "./assets/ornements/ornement1.png";
 function App() {
   const [diceSelected, setDiceSelected] = useState(6); //4 6 8 10 12 20 100
   const [personnage, setPersonnage] = useState();
-  const [isTips, setIsTips] = useState(false);
 
   useEffect(() => {
     setPersonnage(JSON.parse(localStorage.getItem("personnage")));
@@ -46,22 +45,33 @@ function App() {
               value={personnage}
               onChange={(e) => setPersonnage(e.target.value)}
             />
-            <button onClick={(e) => setIsTips(!isTips)}>Help</button>
+            <p className="GlobalHelp">HELP</p>
+            <img
+              src="https://img.icons8.com/?size=100&id=99991&format=png&color=000000"
+              alt=""
+              className="GlobalHelpImg"
+            />
           </div>
         </div>
-        {isTips ? (
-          <div className="GlobalBack">
-            <h1>HELP</h1>
 
-            <button onClick={(e) => setIsTips(!isTips)}>return</button>
-            <a href="https://www.buymeacoffee.com/Simonrouxy" target="_blank">
-              <img
-                src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-                alt="Buy Me A Coffee"
-              />
-            </a>
-          </div>
-        ) : null}
+        <div className="GlobalBack">
+          <h1>HELP</h1>
+          <p>Total Throw and Notes are save in local</p>
+          <p>If you clear history, Throws and Notes will be erased</p>
+          <p>
+            Critical % are made if you want Critical Option on your Throw (it's
+            just for an animation)
+          </p>
+          <p>Many upgrade are comming 😉</p>
+          <p>If you want help me, you can buy me an Avocado ❤️</p>
+        </div>
+        <a href="https://www.buymeacoffee.com/Simonrouxy" target="_blank">
+          <img
+            src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+            alt="Buy Me A Coffee"
+            className="BuyMeCoffe"
+          />
+        </a>
       </div>
 
       <img src={ornement} alt="" className="GlobalOrnementBas" />

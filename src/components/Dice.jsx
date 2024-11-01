@@ -20,6 +20,7 @@ const Dice = ({ DiceNumber }) => {
   const [diceAnim2, setDiceAnim2] = useState("diceAnimStop");
   const [isCritic, setIsCritic] = useState(false);
   const [isClicThrow, setIsClicThrow] = useState(true);
+  const [isCriticalInput, setIsCriticalInput] = useState(false);
 
   useEffect(() => {
     const imageList = [D4, D6, D8, D10, D12, D20, D100, CriticPng, CriticGif];
@@ -36,6 +37,10 @@ const Dice = ({ DiceNumber }) => {
     localStorage.setItem("dice", JSON.stringify(DiceNumber));
     localStorage.setItem("result", JSON.stringify(resultDice));
   }, [resultDice]);
+
+  const CriticalChecked = () => {
+    setIsCriticalInput(!isCriticalInput);
+  };
 
   const Throw = (e) => {
     setDiceAnim1("diceAnimStart1");
@@ -55,10 +60,15 @@ const Dice = ({ DiceNumber }) => {
       setResultDice(result);
       setIsClicThrow(true);
 
-      const calcPourcentDice = (criticPourcent / 100) * DiceNumber;
+      if (isCriticalInput) {
+        const calcPourcentDice = (criticPourcent / 100) * DiceNumber;
 
-      if (result < calcPourcentDice || result > DiceNumber - calcPourcentDice) {
-        setIsCritic(true);
+        if (
+          result < calcPourcentDice ||
+          result > DiceNumber - calcPourcentDice
+        ) {
+          setIsCritic(true);
+        }
       }
     }, 2000);
   };
@@ -96,16 +106,27 @@ const Dice = ({ DiceNumber }) => {
       ) : (
         <button className="ThrowButton">Not Throwable</button>
       )}
-      <input
-        type="range"
-        name="critic"
-        className="criticPourcent"
-        min="0"
-        max="100"
-        defaultValue="5"
-        onChange={(e) => setCriticPourcent(e.target.value)}
-      />
-      <p className="Criticalp">Critical % {criticPourcent}</p>
+      {isCriticalInput ? (
+        <input
+          type="range"
+          name="critic"
+          className="criticPourcent"
+          min="0"
+          max="100"
+          defaultValue={criticPourcent}
+          onChange={(e) => setCriticPourcent(e.target.value)}
+        />
+      ) : null}
+      <div className="ActivCritic">
+        <input
+          type="checkbox"
+          name="ActivCriticInput"
+          checked={isCriticalInput}
+          onClick={CriticalChecked}
+        />
+        <p>Critical </p>
+        {isCriticalInput ? <p>% {criticPourcent}</p> : null}
+      </div>
 
       <p>Session Throw : {sessionThrow}</p>
       <p>Total Throw : {localStorage.getItem("TotalThrow")}</p>
