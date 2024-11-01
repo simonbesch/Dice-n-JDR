@@ -118,15 +118,18 @@ const Dice = ({ DiceNumber }) => {
         />
       ) : null}
       <div className="ActivCritic">
-        <input
-          type="checkbox"
-          name="ActivCriticInput"
-          checked={isCriticalInput}
-          onClick={CriticalChecked}
-        />
-        <p>Critical </p>
-        {isCriticalInput ? <p>% {criticPourcent}</p> : null}
+        <p>Critical</p>
+        {isCriticalInput ? (
+          <p className="criticPourcentp">% {criticPourcent}</p>
+        ) : null}
       </div>
+      <input
+        type="checkbox"
+        name="ActivCriticInput"
+        checked={isCriticalInput}
+        onClick={CriticalChecked}
+        className="InputCheckCritic"
+      />
 
       <p>Session Throw : {sessionThrow}</p>
       <p>Total Throw : {localStorage.getItem("TotalThrow")}</p>

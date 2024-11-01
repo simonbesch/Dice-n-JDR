@@ -31,7 +31,7 @@ html {
   background-color: rgba(255, 255, 255, 0.322);
   padding: 25px;
   border-radius: 15px;
-  margin-top: -75px;
+  margin-top: -80px;
 }
 
 .All {
@@ -122,18 +122,20 @@ html {
 
 .ActivCritic {
   display: flex;
-  input {
-    margin: 0;
-    transform: scale(1);
-    margin-top: -7px;
 
-    width: 15px;
-  }
   p {
     margin-top: 10px;
-    margin-bottom: 15px;
+  }
+  .criticPourcentp {
     margin-left: 5px;
   }
+}
+
+.InputCheckCritic {
+  margin: 0;
+  transform: scale(1);
+  width: 15px;
+  margin-bottom: 15px;
 }
 
 .ThrowButton {
@@ -235,6 +237,7 @@ html {
     width: auto;
   }
   .Global {
+    background-color: rgba(218, 172, 255, 0);
     width: auto;
     padding: 50px;
   }
