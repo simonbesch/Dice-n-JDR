@@ -31,6 +31,7 @@ const Dice = ({ DiceNumber }) => {
 
   useEffect(() => {
     setResultDice();
+    setIsCritic(false);
   }, [DiceNumber]);
 
   useEffect(() => {
