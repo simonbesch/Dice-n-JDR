@@ -16,7 +16,7 @@ const Dice = ({ DiceNumber }) => {
   const [diceStyleValue, setDiceStyleValue] = useState(1);
   const [diceStyleCSS, setDiceStyleCSS] = useState("DiceColor1");
 
-  const [DiceImages, setDiceImages] = useState("DiceColor1");
+  const [DiceLoaded, setDiceLoaded] = useState("DiceColor1");
 
   const DiceImgImport = import.meta.glob("../assets/dices/*/*.png", {
     eager: false,
@@ -39,7 +39,7 @@ const Dice = ({ DiceNumber }) => {
       const D20 = await loadImage(diceStyleValue, 20);
       const D100 = await loadImage(diceStyleValue, 100);
 
-      setDiceImages({ D4, D6, D8, D10, D12, D20, D100 });
+      setDiceLoaded({ D4, D6, D8, D10, D12, D20, D100 });
     };
 
     loadDiceImages();
@@ -113,34 +113,24 @@ const Dice = ({ DiceNumber }) => {
     console.log(diceStyleCSS, diceStyleValue);
   };
 
-  // const diceIMG = {
-  //   D4: DiceImgImport[`../assets/dices/${diceStyleValue}/4.png`]?.default,
-  //   D6: DiceImgImport[`../assets/dices/${diceStyleValue}/6.png`]?.default,
-  //   D8: DiceImgImport[`../assets/dices/${diceStyleValue}/8.png`]?.default,
-  //   D10: DiceImgImport[`../assets/dices/${diceStyleValue}/10.png`]?.default,
-  //   D12: DiceImgImport[`../assets/dices/${diceStyleValue}/12.png`]?.default,
-  //   D20: DiceImgImport[`../assets/dices/${diceStyleValue}/20.png`]?.default,
-  //   D100: DiceImgImport[`../assets/dices/${diceStyleValue}/100.png`]?.default,
-  // };
-
   return (
     <section className="DiceComponent">
       <div className="DiceIMG">
         <div>
           {DiceNumber === 4 ? (
-            <img src={DiceImages.D4} alt="" className={diceAnim2} />
+            <img src={DiceLoaded.D4} alt="" className={diceAnim2} />
           ) : DiceNumber === 6 ? (
-            <img src={DiceImages.D6} alt="" className={diceAnim1} />
+            <img src={DiceLoaded.D6} alt="" className={diceAnim1} />
           ) : DiceNumber === 8 ? (
-            <img src={DiceImages.D8} alt="" className={diceAnim2} />
+            <img src={DiceLoaded.D8} alt="" className={diceAnim2} />
           ) : DiceNumber === 10 ? (
-            <img src={DiceImages.D10} alt="" className={diceAnim2} />
+            <img src={DiceLoaded.D10} alt="" className={diceAnim2} />
           ) : DiceNumber === 12 ? (
-            <img src={DiceImages.D12} alt="" className={diceAnim2} />
+            <img src={DiceLoaded.D12} alt="" className={diceAnim2} />
           ) : DiceNumber === 20 ? (
-            <img src={DiceImages.D20} alt="" className={diceAnim1} />
+            <img src={DiceLoaded.D20} alt="" className={diceAnim1} />
           ) : (
-            <img src={DiceImages.D100} alt="" className={diceAnim1} />
+            <img src={DiceLoaded.D100} alt="" className={diceAnim1} />
           )}
         </div>
         {isCritic ? <img src={CriticGif} alt="" className="Critic" /> : null}
