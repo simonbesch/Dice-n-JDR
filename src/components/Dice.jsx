@@ -4,10 +4,6 @@ import CriticGif from "../assets/critic/critic.gif";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
-const DiceImgImport = import.meta.glob("../assets/dices/*/*.png", {
-  eager: true,
-});
-
 const Dice = ({ DiceNumber }) => {
   const [resultDice, setResultDice] = useState();
   const [sessionThrow, setSessionThrow] = useState(0);
@@ -19,6 +15,35 @@ const Dice = ({ DiceNumber }) => {
   const [isCriticalInput, setIsCriticalInput] = useState(false);
   const [diceStyleValue, setDiceStyleValue] = useState(1);
   const [diceStyleCSS, setDiceStyleCSS] = useState("DiceColor1");
+
+  const [DiceImages, setDiceImages] = useState("DiceColor1");
+
+  const DiceImgImport = import.meta.glob("../assets/dices/*/*.png", {
+    eager: false,
+  });
+
+  const loadImage = async (diceStyleValue, diceType) => {
+    const imageModule = await DiceImgImport[
+      `../assets/dices/${diceStyleValue}/${diceType}.png`
+    ]();
+    return imageModule.default;
+  };
+
+  useEffect(() => {
+    const loadDiceImages = async () => {
+      const D4 = await loadImage(diceStyleValue, 4);
+      const D6 = await loadImage(diceStyleValue, 6);
+      const D8 = await loadImage(diceStyleValue, 8);
+      const D10 = await loadImage(diceStyleValue, 10);
+      const D12 = await loadImage(diceStyleValue, 12);
+      const D20 = await loadImage(diceStyleValue, 20);
+      const D100 = await loadImage(diceStyleValue, 100);
+
+      setDiceImages({ D4, D6, D8, D10, D12, D20, D100 });
+    };
+
+    loadDiceImages();
+  }, [diceStyleValue]);
 
   useEffect(() => {
     const imageList = [CriticPng, CriticGif];
@@ -88,34 +113,34 @@ const Dice = ({ DiceNumber }) => {
     console.log(diceStyleCSS, diceStyleValue);
   };
 
-  const diceIMG = {
-    D4: DiceImgImport[`../assets/dices/${diceStyleValue}/4.png`]?.default,
-    D6: DiceImgImport[`../assets/dices/${diceStyleValue}/6.png`]?.default,
-    D8: DiceImgImport[`../assets/dices/${diceStyleValue}/8.png`]?.default,
-    D10: DiceImgImport[`../assets/dices/${diceStyleValue}/10.png`]?.default,
-    D12: DiceImgImport[`../assets/dices/${diceStyleValue}/12.png`]?.default,
-    D20: DiceImgImport[`../assets/dices/${diceStyleValue}/20.png`]?.default,
-    D100: DiceImgImport[`../assets/dices/${diceStyleValue}/100.png`]?.default,
-  };
+  // const diceIMG = {
+  //   D4: DiceImgImport[`../assets/dices/${diceStyleValue}/4.png`]?.default,
+  //   D6: DiceImgImport[`../assets/dices/${diceStyleValue}/6.png`]?.default,
+  //   D8: DiceImgImport[`../assets/dices/${diceStyleValue}/8.png`]?.default,
+  //   D10: DiceImgImport[`../assets/dices/${diceStyleValue}/10.png`]?.default,
+  //   D12: DiceImgImport[`../assets/dices/${diceStyleValue}/12.png`]?.default,
+  //   D20: DiceImgImport[`../assets/dices/${diceStyleValue}/20.png`]?.default,
+  //   D100: DiceImgImport[`../assets/dices/${diceStyleValue}/100.png`]?.default,
+  // };
 
   return (
     <section className="DiceComponent">
       <div className="DiceIMG">
         <div>
           {DiceNumber === 4 ? (
-            <img src={diceIMG.D4} alt="" className={diceAnim2} />
+            <img src={DiceImages.D4} alt="" className={diceAnim2} />
           ) : DiceNumber === 6 ? (
-            <img src={diceIMG.D6} alt="" className={diceAnim1} />
+            <img src={DiceImages.D6} alt="" className={diceAnim1} />
           ) : DiceNumber === 8 ? (
-            <img src={diceIMG.D8} alt="" className={diceAnim2} />
+            <img src={DiceImages.D8} alt="" className={diceAnim2} />
           ) : DiceNumber === 10 ? (
-            <img src={diceIMG.D10} alt="" className={diceAnim2} />
+            <img src={DiceImages.D10} alt="" className={diceAnim2} />
           ) : DiceNumber === 12 ? (
-            <img src={diceIMG.D12} alt="" className={diceAnim2} />
+            <img src={DiceImages.D12} alt="" className={diceAnim2} />
           ) : DiceNumber === 20 ? (
-            <img src={diceIMG.D20} alt="" className={diceAnim1} />
+            <img src={DiceImages.D20} alt="" className={diceAnim1} />
           ) : (
-            <img src={diceIMG.D100} alt="" className={diceAnim1} />
+            <img src={DiceImages.D100} alt="" className={diceAnim1} />
           )}
         </div>
         {isCritic ? <img src={CriticGif} alt="" className="Critic" /> : null}
