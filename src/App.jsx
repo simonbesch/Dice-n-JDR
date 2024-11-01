@@ -7,6 +7,7 @@ import ornement from "./assets/ornements/ornement1.png";
 function App() {
   const [diceSelected, setDiceSelected] = useState(6); //4 6 8 10 12 20 100
   const [personnage, setPersonnage] = useState();
+  const [isTips, setIsTips] = useState(false);
 
   useEffect(() => {
     setPersonnage(JSON.parse(localStorage.getItem("personnage")));
@@ -45,9 +46,24 @@ function App() {
               value={personnage}
               onChange={(e) => setPersonnage(e.target.value)}
             />
+            <button onClick={(e) => setIsTips(!isTips)}>Help</button>
           </div>
         </div>
+        {isTips ? (
+          <div className="GlobalBack">
+            <h1>HELP</h1>
+
+            <button onClick={(e) => setIsTips(!isTips)}>return</button>
+            <a href="https://www.buymeacoffee.com/Simonrouxy" target="_blank">
+              <img
+                src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                alt="Buy Me A Coffee"
+              />
+            </a>
+          </div>
+        ) : null}
       </div>
+
       <img src={ornement} alt="" className="GlobalOrnementBas" />
     </section>
   );

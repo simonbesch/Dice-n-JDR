@@ -16,7 +16,8 @@ const Dice = ({ DiceNumber }) => {
   const [resultDice, setResultDice] = useState();
   const [sessionThrow, setSessionThrow] = useState(0);
   const [criticPourcent, setCriticPourcent] = useState(5);
-  const [diceAnim, setDiceAnim] = useState("diceAnimStop");
+  const [diceAnim1, setDiceAnim1] = useState("diceAnimStop");
+  const [diceAnim2, setDiceAnim2] = useState("diceAnimStop");
   const [isCritic, setIsCritic] = useState(false);
   const [isClicThrow, setIsClicThrow] = useState(true);
 
@@ -37,7 +38,8 @@ const Dice = ({ DiceNumber }) => {
   }, [resultDice]);
 
   const Throw = (e) => {
-    setDiceAnim("diceAnimStart");
+    setDiceAnim1("diceAnimStart1");
+    setDiceAnim2("diceAnimStart2");
     setIsCritic(false);
     setIsClicThrow(false);
 
@@ -47,7 +49,8 @@ const Dice = ({ DiceNumber }) => {
     localStorage.setItem("TotalThrow", JSON.stringify(totalThrows));
 
     setTimeout(() => {
-      setDiceAnim("diceAnimStop");
+      setDiceAnim1("diceAnimStop");
+      setDiceAnim2("diceAnimStop");
       const result = Math.floor(Math.random() * DiceNumber) + 1;
       setResultDice(result);
       setIsClicThrow(true);
@@ -63,26 +66,26 @@ const Dice = ({ DiceNumber }) => {
   return (
     <section className="DiceComponent">
       <div className="DiceIMG">
-        <div className={diceAnim}>
+        <div>
           {DiceNumber === 4 ? (
-            <img src={D4} alt="" />
+            <img src={D4} alt="" className={diceAnim2} />
           ) : DiceNumber === 6 ? (
-            <img src={D6} alt="" />
+            <img src={D6} alt="" className={diceAnim1} />
           ) : DiceNumber === 8 ? (
-            <img src={D8} alt="" />
+            <img src={D8} alt="" className={diceAnim2} />
           ) : DiceNumber === 10 ? (
-            <img src={D10} alt="" />
+            <img src={D10} alt="" className={diceAnim2} />
           ) : DiceNumber === 12 ? (
-            <img src={D12} alt="" />
+            <img src={D12} alt="" className={diceAnim2} />
           ) : DiceNumber === 20 ? (
-            <img src={D20} alt="" />
+            <img src={D20} alt="" className={diceAnim1} />
           ) : (
-            <img src={D100} alt="" />
+            <img src={D100} alt="" className={diceAnim1} />
           )}
         </div>
         {isCritic ? <img src={CriticGif} alt="" className="Critic" /> : null}
         <p className="Result">
-          {diceAnim === "diceAnimStop" ? resultDice : null}
+          {diceAnim1 === "diceAnimStop" ? resultDice : null}
         </p>
       </div>
       <div className="separation"></div>

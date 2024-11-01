@@ -15,13 +15,14 @@ html {
   width: 100px;
 }
 .GlobalOrnementBas {
-  width: 100px;
+  width: 90px;
   rotate: 180deg;
   float: right;
 }
 
 .BigGlobal {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -137,18 +138,44 @@ html {
   }
 }
 
-.diceAnimStart {
-  img {
-    animation: rotating 2s;
-  }
+.diceAnimStart1 {
+  animation: rotating1 2s;
+}
+.diceAnimStart2 {
+  animation: rotating2 2s;
 }
 
-@keyframes rotating {
+@keyframes rotating1 {
   from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   to {
+    -ms-transform: rotate(2160deg);
+    -moz-transform: rotate(2160deg);
+    -webkit-transform: rotate(2160deg);
+    -o-transform: rotate(2160deg);
     transform: rotate(2160deg);
+  }
+}
+
+@keyframes rotating2 {
+  from {
+    -ms-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  to {
+    -ms-transform: rotateY(2160deg);
+    -moz-transform: rotateY(2160deg);
+    -webkit-transform: rotateY(2160deg);
+    -o-transform: rotateY(2160deg);
+    transform: rotateY(2160deg);
   }
 }
 
@@ -160,8 +187,25 @@ html {
   position: relative;
 }
 
+.GlobalBack {
+  margin-top: 100px;
+  background-color: rgba(255, 255, 255, 0.322);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 100px;
+  margin-left: 25px;
+  margin-right: 25px;
+  width: 200px;
+  padding: 25px;
+  border-radius: 15px;
+}
+
 @media (max-width: 500px) {
   .Ornement {
     width: 15vw;
+  }
+  .GlobalOrnementBas {
+    display: none;
   }
 }
